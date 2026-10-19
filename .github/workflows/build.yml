@@ -467,6 +467,35 @@ jobs:
             VERSION=${{ needs.data.outputs.version }}
             BUILDKIT_INLINE_CACHE=true
 
+      - name: Load the native image for smoke checks
+        env:
+          IMAGE_VERSION: ${{ needs.data.outputs.version }}
+          IMAGE_COMMIT: ${{ github.sha }}
+        run: |
+          docker buildx build --platform linux/amd64 --load --tag statping-smoke:ci \
+            --build-arg "VERSION=$IMAGE_VERSION" --build-arg "COMMIT=$IMAGE_COMMIT" \
+            --build-arg BUILDKIT_INLINE_CACHE=true .
+
+      - name: Check binary, Sass compiler, and service startup
+        run: |
+          docker run --rm --entrypoint statping statping-smoke:ci version
+          printf '%s\n' '$color: #123456; body { color: $color; }' | \
+            docker run --rm -i --entrypoint /usr/bin/sassc statping-smoke:ci -s | \
+            grep -F '#123456'
+          container_id=$(docker run -d --rm --tmpfs /app \
+            -p 127.0.0.1:18080:8080 -e DB_CONN=sqlite -e SAMPLE_DATA=false \
+            -e ADMIN_USER=ciadmin -e ADMIN_PASSWORD=ci-only-not-production \
+            -e NAME='Container smoke check' statping-smoke:ci)
+          trap 'docker logs "$container_id"; docker rm -f "$container_id"' EXIT
+          for attempt in $(seq 1 60); do
+            if curl -fsS --max-time 2 http://127.0.0.1:18080/health > health.json && \
+              jq -e '.online == true' health.json; then
+              exit 0
+            fi
+            sleep 1
+          done
+          exit 1
+
   docker-publish:
     if: >-
       github.repository == 'Gevroska/statping-ng' &&

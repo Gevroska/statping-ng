@@ -10,6 +10,10 @@ removed from this fork. Base future changes on `dev`.
 The `Statping build` workflow builds the existing Dockerfile for `linux/amd64`,
 `linux/arm64`, `linux/arm/v7`, and `linux/arm/v6`. Images are uploaded only after
 the Docker build and the SQLite, MySQL, and PostgreSQL API tests succeed.
+The Dockerfile uses the cross-compilation recipe from upstream's former
+`docker-cross-compile` branch, with the existing shell command retained so the
+`PORT` environment variable expands correctly. The native image is also checked
+for binary startup, Sass compilation, and a healthy HTTP service before upload.
 
 | Event | Image tags at `ghcr.io/gevroska/statping-ng` |
 | --- | --- |
