@@ -5,12 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/pkg/errors"
-	"github.com/statping-ng/statping-ng/handlers"
-	"github.com/statping-ng/statping-ng/source"
-	"github.com/statping-ng/statping-ng/types/configs"
-	"github.com/statping-ng/statping-ng/types/core"
-	"github.com/statping-ng/statping-ng/types/services"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/handlers"
+	"github.com/Gevroska/statping-ng/source"
+	"github.com/Gevroska/statping-ng/types/configs"
+	"github.com/Gevroska/statping-ng/types/core"
+	"github.com/Gevroska/statping-ng/types/services"
+	"github.com/Gevroska/statping-ng/utils"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -351,7 +351,7 @@ func ask(format string) bool {
 func updateDisplay() error {
 	gitCurrent, err := checkGithubUpdates()
 	if err != nil {
-		return errors.Wrap(err, "Issue connecting to https://github.com/statping-ng/statping-ng")
+		return errors.Wrap(err, "Issue connecting to https://github.com/Gevroska/statping-ng")
 	}
 	if gitCurrent.TagName == "" {
 		return nil
@@ -362,7 +362,7 @@ func updateDisplay() error {
 	if VERSION != gitCurrent.TagName[1:] {
 		fmt.Printf("New Update %v Available!\n", gitCurrent.TagName[1:])
 		fmt.Printf("Update Command:\n")
-		fmt.Printf("curl -o- -L https://statping.com/install.sh | bash\n\n")
+		fmt.Printf("curl -o- -L https://raw.githubusercontent.com/Gevroska/statping-ng/dev/install.sh | bash\n\n")
 	}
 	return nil
 }
@@ -395,7 +395,7 @@ func runOnce() error {
 }
 
 func checkGithubUpdates() (githubResponse, error) {
-	url := "https://api.github.com/repos/statping-ng/statping-ng/releases/latest"
+	url := "https://api.github.com/repos/Gevroska/statping-ng/releases/latest"
 	contents, _, err := utils.HttpRequest(url, "GET", nil, nil, nil, time.Duration(2*time.Second), true, nil)
 	if err != nil {
 		return githubResponse{}, err

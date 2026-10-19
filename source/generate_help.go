@@ -11,12 +11,11 @@ import (
 	"html/template"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"strings"
 	"time"
 )
 
-const wikiUrl = "https://github.com/statping-ng/statping-ng.wiki"
+const wikiUrl = "https://github.com/Gevroska/statping-ng.wiki"
 
 var vue = `<template>
 <div class="col-12">
@@ -102,14 +101,14 @@ type Render struct {
 func main() {
 	fmt.Println("RUNNING: ./source/generate_help.go")
 	fmt.Println("\n\nGenerating Help.vue from Statping's Wiki")
-	fmt.Println("Cloning ", wikiUrl)
-	cmd := exec.Command("git", "clone", wikiUrl)
-	cmd.Start()
-	cmd.Wait()
+	if _, err := os.Stat("statping-ng.wiki/_Sidebar.md"); err != nil {
+		fmt.Println("Initialize the documentation submodule before generating help:", wikiUrl)
+		os.Exit(1)
+	}
 
 	fmt.Println("Generating Help view from Wiki")
 
-	d, _ := ioutil.ReadFile("statping.wiki/_Sidebar.md")
+	d, _ := ioutil.ReadFile("statping-ng.wiki/_Sidebar.md")
 
 	var cats []*Category
 	var pages []*Page
@@ -131,7 +130,7 @@ func main() {
 			cats = append(cats, newCate)
 		}
 		if txt[0:2] == "[[" {
-			file := "statping.wiki/" + txt[2:len(txt)-2] + ".md"
+			file := "statping-ng.wiki/" + txt[2:len(txt)-2] + ".md"
 			file = strings.ReplaceAll(file, " ", "-")
 			page := &Page{
 				String: txt[2 : len(txt)-2],
@@ -144,12 +143,12 @@ func main() {
 
 	home := &Page{
 		String: "Home",
-		Data:   open("statping.wiki/Home.md"),
+		Data:   open("statping-ng.wiki/Home.md"),
 	}
 
 	footer := &Page{
 		String: "Footer",
-		Data:   open("statping.wiki/_Footer.md"),
+		Data:   open("statping-ng.wiki/_Footer.md"),
 	}
 
 	w := bytes.NewBufferString("")
@@ -168,8 +167,6 @@ func main() {
 	fmt.Println("Saving wiki page to: ./frontend/src/pages/Home.vue")
 	ioutil.WriteFile("../frontend/src/pages/Help.vue", w.Bytes(), os.FileMode(0755))
 
-	fmt.Println("Deleting statping wiki repo")
-	os.RemoveAll("statping.wiki")
 }
 
 func open(filename string) string {

@@ -9,14 +9,14 @@ Binaries and docker images get built automatically by GitHub actions.
 If the builds succeed, tests are run to ensure nothing is completely broken.
 Build artifacts can be downloaded from the actions tab on GitHub.
 
-This happens on every push to this repo and on every pull request update.
+This happens on every push to this repo and on every pull request update. Successful pushes to `dev` also publish `ghcr.io/gevroska/statping-ng:dev`; stable version tags publish `latest`. See [Docker publishing](../.github/DOCKER_PUBLISHING.md).
 
 
 ## Releases
 We used to have a model of "stable" and "unstable" releases, which would get triggered by pushing to a respective release branch.
 The new system tries to address some of the issues with the old system and simplifies the workflow definitions.
 
-Incoming pull requests are merged into the `main` (default) branch.
+Incoming pull requests are merged into the `dev` (default) branch.
 Once you feel like we have enough new changes to justify a release, a tag can be created.
 This is **not** a GitHub release and sadly can't be done from github.com directly.
 Either
@@ -26,7 +26,7 @@ Either
 
 To create a tag from your local workspace, run
 ```bash
-git checkout main
+git checkout dev
 git pull
 git tag v1.2.3
 git push origin v1.2.3

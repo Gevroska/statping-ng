@@ -3,9 +3,9 @@ package handlers
 import (
 	"testing"
 
-	"github.com/statping-ng/statping-ng/notifiers"
-	"github.com/statping-ng/statping-ng/types/services"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/notifiers"
+	"github.com/Gevroska/statping-ng/types/services"
+	"github.com/Gevroska/statping-ng/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

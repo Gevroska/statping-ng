@@ -11,12 +11,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/statping-ng/statping-ng/types"
-	"github.com/statping-ng/statping-ng/types/checkins"
-	"github.com/statping-ng/statping-ng/types/errors"
-	"github.com/statping-ng/statping-ng/types/failures"
-	"github.com/statping-ng/statping-ng/types/hits"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types"
+	"github.com/Gevroska/statping-ng/types/checkins"
+	"github.com/Gevroska/statping-ng/types/errors"
+	"github.com/Gevroska/statping-ng/types/failures"
+	"github.com/Gevroska/statping-ng/types/hits"
+	"github.com/Gevroska/statping-ng/utils"
 )
 
 const limitedFailures = 25

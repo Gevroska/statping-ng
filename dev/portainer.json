@@ -5,7 +5,7 @@
     "restart_policy": "unless-stopped",
     "description": "Service monitoring with an easy to use status page and mobile app",
     "logo": "https://assets.statping.com/icon.png",
-    "image": "statping/statping:latest",
+    "image": "ghcr.io/gevroska/statping-ng:dev",
     "platform": "linux",
     "categories": ["monitoring"],
     "administrator_only": false,

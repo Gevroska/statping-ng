@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/utils"
 	"io"
 	"os"
 	"os/exec"
@@ -26,7 +26,7 @@ var updateCmd = &cobra.Command{
 	Short:   "Update to the latest version",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		log.Infoln("Updating Statping to the latest version...")
-		log.Infoln("curl -o- -L https://statping.com/install.sh | bash")
+		log.Infoln("curl -o- -L https://raw.githubusercontent.com/Gevroska/statping-ng/dev/install.sh | bash")
 		curl, err := exec.LookPath("curl")
 		if err != nil {
 			return err
@@ -38,7 +38,7 @@ var updateCmd = &cobra.Command{
 
 		ree := bytes.NewBuffer(nil)
 
-		c1 := exec.Command(curl, "-o-", "-L", "https://statping.com/install.sh")
+		c1 := exec.Command(curl, "-o-", "-L", "https://raw.githubusercontent.com/Gevroska/statping-ng/dev/install.sh")
 		c2 := exec.Command(bash)
 
 		r, w := io.Pipe()

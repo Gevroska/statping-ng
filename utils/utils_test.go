@@ -35,7 +35,7 @@ func TestInitLogs(t *testing.T) {
 }
 
 func TestDir(t *testing.T) {
-	assert.Contains(t, Directory, "statping-ng/statping-ng")
+	assert.Contains(t, Directory, "ghcr.io/gevroska/statping-ng:dev")
 }
 
 func TestCommand(t *testing.T) {

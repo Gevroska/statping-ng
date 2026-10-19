@@ -2,10 +2,10 @@ package core
 
 import (
 	"github.com/pkg/errors"
-	"github.com/statping-ng/statping-ng/database"
-	"github.com/statping-ng/statping-ng/types/metrics"
-	"github.com/statping-ng/statping-ng/types/null"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/database"
+	"github.com/Gevroska/statping-ng/types/metrics"
+	"github.com/Gevroska/statping-ng/types/null"
+	"github.com/Gevroska/statping-ng/utils"
 )
 
 var db database.Database

@@ -2,7 +2,7 @@ package failures
 
 import (
 	"fmt"
-	"github.com/statping-ng/statping-ng/database"
+	"github.com/Gevroska/statping-ng/database"
 	"time"
 )
 

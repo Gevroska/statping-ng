@@ -10,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/utils"
 	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/html"
 )
@@ -165,7 +165,7 @@ const emailFailureMJML = `<mjml>
             <mj-text color="#445566" font-size="11px" align="center" line-height="16px" font-weight="bold">
               <a class="footer-link" href="https://statping.com">Statping.com</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; 
               
-              <a class="footer-link" href="https://github.com/statping/statping">Github</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
+              <a class="footer-link" href="https://github.com/Gevroska/statping-ng">Github</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
               
               <a class="footer-link" href="https://statping.com/privacy">Privacy</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
             </mj-text>
@@ -257,7 +257,7 @@ const emailSuccessMJML = `<mjml>
             <mj-text color="#445566" font-size="11px" align="center" line-height="16px" font-weight="bold">
               <a class="footer-link" href="https://statping.com">Statping.com</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; 
               
-              <a class="footer-link" href="https://github.com/statping/statping">Github</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
+              <a class="footer-link" href="https://github.com/Gevroska/statping-ng">Github</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
               
               <a class="footer-link" href="https://statping.com/privacy">Privacy</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
             </mj-text>

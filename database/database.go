@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"github.com/statping-ng/statping-ng/types/metrics"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types/metrics"
+	"github.com/Gevroska/statping-ng/utils"
 	"strings"
 	"time"
 

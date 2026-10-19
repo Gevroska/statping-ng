@@ -3,11 +3,11 @@ package services
 import (
 	"time"
 
-	"github.com/statping-ng/statping-ng/types/checkins"
-	"github.com/statping-ng/statping-ng/types/failures"
-	"github.com/statping-ng/statping-ng/types/incidents"
-	"github.com/statping-ng/statping-ng/types/messages"
-	"github.com/statping-ng/statping-ng/types/null"
+	"github.com/Gevroska/statping-ng/types/checkins"
+	"github.com/Gevroska/statping-ng/types/failures"
+	"github.com/Gevroska/statping-ng/types/incidents"
+	"github.com/Gevroska/statping-ng/types/messages"
+	"github.com/Gevroska/statping-ng/types/null"
 )
 
 // Service is the main struct for Services

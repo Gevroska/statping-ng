@@ -15,15 +15,15 @@ import (
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/statping-ng/statping-ng/types/checkins"
-	"github.com/statping-ng/statping-ng/types/metrics"
+	"github.com/Gevroska/statping-ng/types/checkins"
+	"github.com/Gevroska/statping-ng/types/metrics"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
 	"github.com/emersion/go-imap/client"
-	"github.com/statping-ng/statping-ng/types/failures"
-	"github.com/statping-ng/statping-ng/types/hits"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types/failures"
+	"github.com/Gevroska/statping-ng/types/hits"
+	"github.com/Gevroska/statping-ng/utils"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 )
 

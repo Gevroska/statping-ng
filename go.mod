@@ -1,4 +1,4 @@
-module github.com/statping-ng/statping-ng
+module github.com/Gevroska/statping-ng
 
 go 1.19
 

@@ -2,9 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/statping-ng/statping-ng/types/core"
-	"github.com/statping-ng/statping-ng/types/errors"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types/core"
+	"github.com/Gevroska/statping-ng/types/errors"
+	"github.com/Gevroska/statping-ng/utils"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"net/http"

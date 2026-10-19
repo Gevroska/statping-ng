@@ -2,8 +2,8 @@ package failures
 
 import (
 	"fmt"
-	"github.com/statping-ng/statping-ng/types"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types"
+	"github.com/Gevroska/statping-ng/utils"
 	gormbulk "github.com/t-tiger/gorm-bulk-insert/v2"
 	"time"
 )

@@ -11,7 +11,7 @@
     "localstorage": {}
   },
   "manifestVersion": 2,
-  "website": "https://github.com/statping/statping",
+  "website": "https://github.com/Gevroska/statping-ng",
   "contactEmail": "info@statping.com",
   "icon": "https://assets.statping.com/icon.png",
   "tags": [ "monitoring", "uptime" ],

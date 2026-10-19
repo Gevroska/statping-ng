@@ -7,10 +7,7 @@ GOVERSION=1.17.8
 NODE_VERSION=16.14.0
 XGO=xgo -go $(GOVERSION) --dest=build
 BUILDVERSION=-ldflags "-X main.VERSION=${VERSION} -X main.COMMIT=${COMMIT}"
-TRVIS_SECRET=O3/2KTOV8krv+yZ1EB/7D1RQRe6NdpFUEJNJkMS/ollYqmz3x2mCO7yIgIJKCKguLXZxjM6CxJcjlCrvUwibL+8BBp7xJe4XFIOrjkPvbbVPry4HkFZCf2GfcUK6o4AByQ+RYqsW2F17Fp9KLQ1rL3OT3eLTwCAGKx3tlY8y+an43zkmo5dN64V6sawx26fh6XTfww590ey+ltgQTjf8UPNup2wZmGvMo9Hwvh/bYR/47bR6PlBh6vhlKWyotKf2Fz1Bevbu0zc35pee5YlsrHR+oSF+/nNd/dOij34BhtqQikUR+zQVy9yty8SlmneVwD3yOENvlF+8roeKIXb6P6eZnSMHvelhWpAFTwDXq2N3d/FIgrQtLxsAFTI3nTHvZgs6OoTd6dA0wkhuIGLxaL3FOeztCdxP5J/CQ9GUcTvifh5ArGGwYxRxQU6rTgtebJcNtXFISP9CEUR6rwRtb6ax7h6f1SbjUGAdxt+r2LbEVEk4ZlwHvdJ2DtzJHT5DQtLrqq/CTUgJ8SJFMkrJMp/pPznKhzN4qvd8oQJXygSXX/gz92MvoX0xgpNeLsUdAn+PL9KketfR+QYosBz04d8k05E+aTqGaU7FUCHPTLwlOFvLD8Gbv0zsC/PWgSLXTBlcqLEz5PHwPVHTcVzspKj/IyYimXpCSbvu1YOIjyc=
-PUBLISH_BODY='{ "request": { "branch": "master", "message": "Homebrew update version v${VERSION}", "config": { "env": { "VERSION": "${VERSION}", "COMMIT": "$(TRAVIS_COMMIT)" } } } }'
-TRAVIS_BUILD_CMD='{ "request": { "branch": "master", "message": "Compile master for Statping v${VERSION}", "config": { "merge_mode": "replace", "language": "go", "go": 1.17, "install": true, "sudo": "required", "services": ["docker"], "env": { "secure": "${TRVIS_SECRET}" }, "before_deploy": ["git config --local user.name \"hunterlong\"", "git config --local user.email \"info@socialeck.com\"", "git tag v$(VERSION) --force"], "deploy": [{ "provider": "releases", "api_key": "$$GITHUB_TOKEN", "file_glob": true, "file": "build/*", "skip_cleanup": true, "on": { "branch": "master" } }], "before_script": ["rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install stable", "nvm install 16.14.0", "nvm use 16.14.0 --default", "npm install -g sass yarn cross-env", "pip install --user awscli"], "script": ["make release"], "after_success": [], "after_deploy": ["make post-release"] } } }'
-TEST_DIR=$(GOPATH)/src/github.com/statping-ng/statping-ng
+TEST_DIR=$(GOPATH)/src/github.com/Gevroska/statping-ng
 PATH:=$(GOPATH)/bin:$(PATH)
 OS = freebsd linux openbsd
 ARCHS = 386 arm amd64 arm64
@@ -33,7 +30,7 @@ go-build: clean
 lint:
 	go fmt ./...
 	golint ./...
-	impi --local github.com/statping-ng/statping-ng/ --scheme stdLocalThirdParty ./...
+	impi --local github.com/Gevroska/statping-ng/ --scheme stdLocalThirdParty ./...
 	goimports ./...
 
 up:
@@ -47,7 +44,7 @@ down:
 	docker compose -f docker-compose.yml -f dev/docker-compose.full.yml down --volumes --remove-orphans
 
 lite: clean
-	docker build -t statping-ng/statping-ng:dev -f dev/Dockerfile.dev .
+	docker build -t ghcr.io/gevroska/statping-ng:dev -f dev/Dockerfile.dev .
 	docker compose -f dev/docker-compose.lite.yml down
 	docker compose -f dev/docker-compose.lite.yml up --remove-orphans
 
@@ -118,7 +115,7 @@ compose-build-full:
 	docker compose -f docker-compose.yml -f dev/docker-compose.full.yml build --parallel --build-arg VERSION=${VERSION}
 
 docker-latest: 
-	docker build -t statping-ng/statping-ng:latest --build-arg VERSION=${VERSION} .
+	docker build -t ghcr.io/gevroska/statping-ng:latest --build-arg VERSION=${VERSION} .
 
 docker-test:
 	docker compose -f docker-compose.test.yml up --remove-orphans
@@ -269,36 +266,26 @@ coverage: test-deps
 
 # build Statping using a travis ci trigger
 travis-build:
-	curl -s -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Travis-API-Version: 3" -H "Authorization: token $(TRAVIS_API)" -d $(TRAVIS_BUILD_CMD) https://api.travis-ci.com/repo/statping%2Fstatping/requests
+	@echo "Use GitHub Actions: https://github.com/Gevroska/statping-ng/actions/workflows/build.yml"
+	@exit 1
 
 download-key:
 	wget -O statping.gpg $(SIGN_URL)
 	gpg --import statping.gpg
 
 dockerhub:
-	docker build --build-arg VERSION=${VERSION} -t adamboutcher/statping-ng:latest --no-cache -f Dockerfile .
-	docker tag adamboutcher/statping-ng adamboutcher/statping-ng:v${VERSION}
-	docker push adamboutcher/statping-ng:v${VERSION}
-	docker push adamboutcher/statping-ng
+	docker build --build-arg VERSION=${VERSION} -t ghcr.io/gevroska/statping-ng:latest --no-cache -f Dockerfile .
+	docker tag ghcr.io/gevroska/statping-ng:latest ghcr.io/gevroska/statping-ng:${VERSION}
+	docker push ghcr.io/gevroska/statping-ng:${VERSION}
+	docker push ghcr.io/gevroska/statping-ng:latest
 
 docker-build-dev:
-	docker build --build-arg VERSION=${VERSION} -t statping-ng/statping-ng:latest --no-cache -f Dockerfile .
-	docker tag statping-ng/statping-ng:latest statping-ng/statping-ng:dev-v${VERSION}
+	docker build --build-arg VERSION=${VERSION} -t ghcr.io/gevroska/statping-ng:latest --no-cache -f Dockerfile .
+	docker tag ghcr.io/gevroska/statping-ng:latest ghcr.io/gevroska/statping-ng:dev-v${VERSION}
 
-post-release: frontend-build upload_to_s3 publish-homebrew dockerhub
-
-# update the homebrew application to latest for mac
-publish-homebrew:
-	curl -s -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Travis-API-Version: 3" -H "Authorization: token $(TRAVIS_API)" -d $(PUBLISH_BODY) https://api.travis-ci.com/repo/statping%2Fhomebrew-statping/requests
-
-upload_to_s3:
-	tar -czvf source.tar.gz source/
-	aws s3 cp source.tar.gz s3://assets.statping.com/
-	rm -rf source.tar.gz
-	aws s3 cp source/dist/css/ s3://assets.statping.com/css/ --recursive --exclude "*" --include "*.css"
-	aws s3 cp source/dist/js/ s3://assets.statping.com/js/ --recursive --exclude "*" --include "*.js"
-	aws s3 cp source/dist/scss/ s3://assets.statping.com/scss/ --recursive --exclude "*" --include "*.scss"
-	aws s3 cp install.sh s3://assets.statping.com/
+post-release publish-homebrew upload_to_s3:
+	@echo "Fork releases use GitHub Actions; legacy upstream publishing is unavailable."
+	@exit 1
 
 travis_s3_creds:
 	mkdir -p ~/.aws
@@ -320,10 +307,10 @@ sentry-release:
 
 download-bins: clean
 	mkdir build || true
-	wget "https://github.com/statping-ng/statping-ng/releases/download/v${VERSION}/statping-linux-386.tar.gz"
-	wget "https://github.com/statping-ng/statping-ng/releases/download/v${VERSION}/statping-linux-amd64.tar.gz"
-	wget "https://github.com/statping-ng/statping-ng/releases/download/v${VERSION}/statping-linux-arm.tar.gz"
-	wget "https://github.com/statping-ng/statping-ng/releases/download/v${VERSION}/statping-linux-arm64.tar.gz"
+	wget "https://github.com/Gevroska/statping-ng/releases/download/v${VERSION}/statping-linux-386.tar.gz"
+	wget "https://github.com/Gevroska/statping-ng/releases/download/v${VERSION}/statping-linux-amd64.tar.gz"
+	wget "https://github.com/Gevroska/statping-ng/releases/download/v${VERSION}/statping-linux-arm.tar.gz"
+	wget "https://github.com/Gevroska/statping-ng/releases/download/v${VERSION}/statping-linux-arm64.tar.gz"
 	mv statping-linux-386.tar.gz build/
 	mv statping-linux-amd64.tar.gz build/
 	mv statping-linux-arm.tar.gz build/
@@ -366,13 +353,13 @@ xgo-latest:
 buildx-latest: multiarch
 	docker buildx create --name statping-latest --driver-opt image=moby/buildkit:master
 	docker buildx inspect --builder statping-latest --bootstrap
-	docker buildx build --builder statping-latest --cache-from "type=local,src=/tmp/.buildx-cache" --cache-to "type=local,dest=/tmp/.buildx-cache,mode=max" --push --pull --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 -f Dockerfile -t adamboutcher/statping-ng:latest -t adamboutcher/statping-ng:v${VERSION} --build-arg=VERSION=${VERSION} --build-arg=COMMIT=${COMMIT} .
+	docker buildx build --builder statping-latest --cache-from "type=local,src=/tmp/.buildx-cache" --cache-to "type=local,dest=/tmp/.buildx-cache,mode=max" --push --pull --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 -f Dockerfile -t ghcr.io/gevroska/statping-ng:latest -t ghcr.io/gevroska/statping-ng:v${VERSION} --build-arg=VERSION=${VERSION} --build-arg=COMMIT=${COMMIT} .
 	docker buildx rm statping-latest
 
 buildx-dev: multiarch
 	docker buildx create --name statping-dev --driver-opt image=moby/buildkit:master
 	docker buildx inspect --builder statping-dev --bootstrap
-	docker buildx build --builder statping-dev --cache-from "type=local,src=/tmp/.buildx-cache" --cache-to "type=local,dest=/tmp/.buildx-cache,mode=max" --push --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 -f Dockerfile -t adamboutcher/statping-ng:dev --build-arg=VERSION=${VERSION} --build-arg=COMMIT=${COMMIT} .
+	docker buildx build --builder statping-dev --cache-from "type=local,src=/tmp/.buildx-cache" --cache-to "type=local,dest=/tmp/.buildx-cache,mode=max" --push --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 -f Dockerfile -t ghcr.io/gevroska/statping-ng:dev --build-arg=VERSION=${VERSION} --build-arg=COMMIT=${COMMIT} .
 	docker buildx rm statping-dev
 
 multiarch:

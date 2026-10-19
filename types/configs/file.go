@@ -2,7 +2,7 @@ package configs
 
 import (
 	"github.com/pkg/errors"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/utils"
 	"os"
 	"path/filepath"
 	"strings"

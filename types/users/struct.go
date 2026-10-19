@@ -1,7 +1,7 @@
 package users
 
 import (
-	"github.com/statping-ng/statping-ng/types/null"
+	"github.com/Gevroska/statping-ng/types/null"
 	"time"
 )
 

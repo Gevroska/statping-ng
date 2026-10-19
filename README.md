@@ -1,17 +1,17 @@
 <h1 align="center" style="text-align:center">
-  <img alt="Statping-ng" src="https://raw.githubusercontent.com/statping-ng/statping-ng/dev/frontend/public/img/banner.png" width="60%" style="width:60%"/>
+  <img alt="Statping-ng" src="https://raw.githubusercontent.com/Gevroska/statping-ng/dev/frontend/public/img/banner.png" width="60%" style="width:60%"/>
 </h1>
 <p align="center" style="text-align:center">
   <strong>Statping-ng</strong> - <em>Web and App Status Monitoring for Any Type of Project</em>
 </p>
 <p align="center" style="text-align:center">
-  <a href="https://statping-ng.github.io" >Website</a> |
-  <a href="https://github.com/statping-ng/statping-ng/wiki" >Wiki</a>
+  <a href="https://github.com/Gevroska/statping-ng" >Website</a> |
+  <a href="https://github.com/Gevroska/statping-ng/wiki" >Wiki</a>
   <br/>
-  <a href="https://github.com/statping-ng/statping-ng/wiki/Linux" >Linux</a> |
-  <a href="https://github.com/statping-ng/statping-ng/wiki/Windows" >Windows</a> |
-  <a href="https://github.com/statping-ng/statping-ng/wiki/Mac" >Mac</a> |
-  <a href="https://github.com/statping-ng/statping-ng/wiki/Docker" >Containers</a>
+  <a href="https://github.com/Gevroska/statping-ng/wiki/Linux" >Linux</a> |
+  <a href="https://github.com/Gevroska/statping-ng/wiki/Windows" >Windows</a> |
+  <a href="https://github.com/Gevroska/statping-ng/wiki/Mac" >Mac</a> |
+  <a href="https://github.com/Gevroska/statping-ng/wiki/Docker" >Containers</a>
 </p>
 
 <h2> Statping-ng - <em>Status Page & Monitoring Server</em></h2>
@@ -21,18 +21,15 @@ Statping-ng aims to be an updated drop-in replacement of statping after developm
 </p>
 
 <p align="center" style="text-align:center">
-  <a href="https://github.com/statping-ng/statping-ng/blob/stable/LICENSE"><img alt="License" src="https://img.shields.io/github/license/statping-ng/statping-ng?color=success&style=for-the-badge&logo" /></a>
+  <a href="https://github.com/Gevroska/statping-ng/blob/dev/LICENSE"><img alt="License" src="https://img.shields.io/github/license/Gevroska/statping-ng?color=success&style=for-the-badge&logo" /></a>
 </p><p align="center" style="text-align:center">
-  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/statping-ng/statping-ng?style=for-the-badge&logo=github" />
-  <img alt="Dev Build Status" src="https://img.shields.io/github/actions/workflow/status/statping-ng/statping-ng/build.yml?branch=dev&label=Dev&style=for-the-badge&logo=github" />
-  <img alt="Unstable Build Status" src="https://img.shields.io/github/actions/workflow/status/statping-ng/statping-ng/build.yml?branch=unstable&label=Unstable&style=for-the-badge&logo=github" />
-  <img alt="Stable Build Status" src="https://img.shields.io/github/actions/workflow/status/statping-ng/statping-ng/build.yml?branch=stable&label=Stable&style=for-the-badge&logo=github" />
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/Gevroska/statping-ng?style=for-the-badge&logo=github" />
+  <img alt="Dev Build Status" src="https://img.shields.io/github/actions/workflow/status/Gevroska/statping-ng/build.yml?branch=dev&label=Dev&style=for-the-badge&logo=github" />
 </p><p align="center" style="text-align:center">
-  <a href="https://hub.docker.com/r/adamboutcher/statping-ng"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/adamboutcher/statping-ng?style=for-the-badge&logo=docker&logoColor=white" /></a>
-  <a href="https://hub.docker.com/r/adamboutcher/statping-ng"><img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/adamboutcher/statping-ng/latest?style=for-the-badge&logo=docker&logoColor=white" /></a>
+  <a href="https://github.com/Gevroska/statping-ng/pkgs/container/statping-ng"><img alt="GHCR container" src="https://img.shields.io/badge/container-GHCR-blue?style=for-the-badge&logo=docker&logoColor=white" /></a>
 </p><p align="center" style="text-align:center">
-  <img alt="Go Version" src="https://img.shields.io/github/go-mod/go-version/statping-ng/statping-ng?style=for-the-badge" />
-  <a href="https://goreportcard.com/badge/github.com/statping-ng/statping-ng"><img alt="Go Report" src="https://goreportcard.com/badge/github.com/statping-ng/statping-ng?style=for-the-badge" /></a>
+  <img alt="Go Version" src="https://img.shields.io/github/go-mod/go-version/Gevroska/statping-ng?style=for-the-badge" />
+  <a href="https://goreportcard.com/badge/github.com/Gevroska/statping-ng"><img alt="Go Report" src="https://goreportcard.com/badge/github.com/Gevroska/statping-ng?style=for-the-badge" /></a>
 </p>
 
 <hr/>
@@ -44,7 +41,7 @@ Statping-ng aims to be an updated drop-in replacement of statping after developm
   Statping-ng strives to remain future-proof and remain intact if a failure is created. Your Statping-ng service should not be running on the same instance you're trying to monitor. If your server crashes your Status Page should still remaining online to notify your users of downtime.
 </p>
 <p>
-  <a href="https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/statping-ng/statping-ng/stable/dev/pwd-stack.yml"><img alt="Try Statping-ng via Play with Docker" src="https://statping-ng.github.io/assets/external/docker-pwd.png" height="25px" style="height:25px" /></a> - Login is <kbd>admin</kbd>, password <kbd>admin</kbd>.
+  <a href="https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/Gevroska/statping-ng/dev/dev/pwd-stack.yml"><img alt="Try Statping-ng via Play with Docker" src="https://statping-ng.github.io/assets/external/docker-pwd.png" height="25px" style="height:25px" /></a> - Login is <kbd>admin</kbd>, password <kbd>admin</kbd>.
 </p>
 <div style="clear:both;"><br/><br/></div>
 
@@ -54,10 +51,10 @@ Statping-ng aims to be an updated drop-in replacement of statping after developm
 Statping-ng is built in Go Language so all you need is the pre-compiled binary based on your operating system. You won't need to install anything extra once you have the Statping binary installed. Windows, Linux or Mac, We compile to all the popular systems, including Raspberry Pi!
 </p>
 <p align="center" style="text-align:center">
-<a href="https://github.com/statping-ng/statping-ng/wiki/Linux"><img alt="Linux" src="https://statping-ng.github.io/assets/external/linux.png" style="width:5%;margin-right:5px;" width=5% /></a>
-<a href="https://github.com/statping-ng/statping-ng/wiki/Windows"><img alt="Windows" src="https://statping-ng.github.io/assets/external/windows.png" style="width:5%;margin-right:5px;" width=5% /></a>
-<a href="https://github.com/statping-ng/statping-ng/wiki/Mac"><img alt="Apple Mac" src="https://statping-ng.github.io/assets/external/apple.png" style="width:5%;margin-right:5px;" width=5% /></a>
-<a href="https://github.com/statping-ng/statping-ng/wiki/Docker"><img alt="Containers" src="https://statping-ng.github.io/assets/external/dockericon.png" style="width:5%;margin-right:5px;" width=5% /></a>
+<a href="https://github.com/Gevroska/statping-ng/wiki/Linux"><img alt="Linux" src="https://statping-ng.github.io/assets/external/linux.png" style="width:5%;margin-right:5px;" width=5% /></a>
+<a href="https://github.com/Gevroska/statping-ng/wiki/Windows"><img alt="Windows" src="https://statping-ng.github.io/assets/external/windows.png" style="width:5%;margin-right:5px;" width=5% /></a>
+<a href="https://github.com/Gevroska/statping-ng/wiki/Mac"><img alt="Apple Mac" src="https://statping-ng.github.io/assets/external/apple.png" style="width:5%;margin-right:5px;" width=5% /></a>
+<a href="https://github.com/Gevroska/statping-ng/wiki/Docker"><img alt="Containers" src="https://statping-ng.github.io/assets/external/dockericon.png" style="width:5%;margin-right:5px;" width=5% /></a>
 <a href="https://statping-ng.github.io/assets/external/android.png)](https://play.google.com/store/apps/details?id=com.statping"><img alt="Android Play Store" src="https://statping-ng.github.io/assets/external/android.png" style="width:5%;margin-right:5px;" width=5% /></a>
 <a href="https://itunes.apple.com/us/app/apple-store/id1445513219"><img alt="Apple Apps Store" src="https://statping-ng.github.io/assets/external/appstore.png" style="width:5%;margin-right:5px;" width=5% /></a>
 </p>
@@ -100,7 +97,7 @@ Statping-ng is 100% compatible with the statping app which is available on the A
 
 <h3>Notifications - Slack, Email, Twilio and more</h3>
 <p>Statping-ng includes email notification via SMTP and Slack integration using <a href="https://api.slack.com/incoming-webhooks">Incoming Webhook</a>. Insert the webhook URL into the Settings page in Statping-ng and enable the Slack integration. Anytime a service fails, the channel that you specified on Slack will receive a message.</p>
-<p>View the <a href="https://github.com/statping-ng/statping-ng/wiki/Statping-Plugins">Plugin Wiki</a> to see detailed information about Golang Plugins. Statping-ng isn't just another Status Page for your applications, it's a framework that allows you to create your own plugins to interact with every element of your status page. <a href="https://github.com/statping-ng/statping-ng/wiki/Notifiers">Notifier's</a> can also be create with only 1 golang file.</p>
+<p>View the <a href="https://github.com/Gevroska/statping-ng/wiki/Statping-Plugins">Plugin Wiki</a> to see detailed information about Golang Plugins. Statping-ng isn't just another Status Page for your applications, it's a framework that allows you to create your own plugins to interact with every element of your status page. <a href="https://github.com/Gevroska/statping-ng/wiki/Notifiers">Notifier's</a> can also be create with only 1 golang file.</p>
 <div style="clear:both;"><br/><br/><br/></div>
 
 
@@ -119,11 +116,11 @@ Having a straight forward dashboard makes Statping-ng that much better. Quickly 
 <p>Here's a few quick start guides to get you going, fast.</p>
 
 <h3>Docker</h3>
-<p>Use the <a href="https://hub.docker.com/r/adamboutcher/statping-ng">Statping Docker Image</a> to create a status page in seconds. Checkout the <a href="https://github.com/statping-ng/statping-ng/wiki/Docker">Docker Wiki</a> to view more details on how to get started using Docker.
+<p>Use the <a href="https://github.com/Gevroska/statping-ng/pkgs/container/statping-ng">Statping Docker Image</a> to create a status page in seconds. Checkout the <a href="https://github.com/Gevroska/statping-ng/wiki/Docker">Docker Wiki</a> to view more details on how to get started using Docker.
 </p>
 
 ```bash
-docker run -it -p 8080:8080 adamboutcher/statping-ng
+docker run -it -p 8080:8080 ghcr.io/gevroska/statping-ng:dev
 ```
 
 <h3>Docker Compose</h3>
@@ -145,7 +142,7 @@ LETSENCRYPT_HOST=mydomain.com \
 <p>Once your instance has started, it will take a moment to get your SSL certificate. Make sure you have a A or CNAME record on your domain that points to the IP/DNS of your server running Statping-ng.</p>
 
 <h3>Prometheus Exporter</h3>
-<p>Statping-ng includes a <a href="https://github.com/statping-ng/statping-ng/wiki/Prometheus-Exporter">Prometheus Exporter</a> so you can have even more monitoring power with your services. The Prometheus exporter can be seen on <kbd>/metrics</kbd>, simply create another exporter in your prometheus config. Use your Statping-ng API Secret for the Authorization Bearer header, the <kbd>/metrics</kbd> URL is dedicated for Prometheus and requires the correct API Secret has <kbd>Authorization</kbd> header.</p>
+<p>Statping-ng includes a <a href="https://github.com/Gevroska/statping-ng/wiki/Prometheus-Exporter">Prometheus Exporter</a> so you can have even more monitoring power with your services. The Prometheus exporter can be seen on <kbd>/metrics</kbd>, simply create another exporter in your prometheus config. Use your Statping-ng API Secret for the Authorization Bearer header, the <kbd>/metrics</kbd> URL is dedicated for Prometheus and requires the correct API Secret has <kbd>Authorization</kbd> header.</p>
 
 ```yaml
 scrape_configs:
@@ -155,8 +152,11 @@ scrape_configs:
       - targets: ['statping:8080']
 ```
 
-<h2>Contributing</h2>
-<p>Statping-ng accepts Push Requests to the <kbd>dev</kbd> branch!</p>
-<p>Feel free to add your own features and notifiers.You probably want to checkout the <a href="https://github.com/statping-ng/statping-ng/wiki/Notifiers">Notifier Wiki</a> to get a better understanding on how to create your own notification methods for failing/successful services.</p>
+## Why this fork?
+
+This fork fixes [CVE-2026-50884](https://github.com/advisories/GHSA-5442-mh7f-72px).
+
+<h2>Development and testing</h2>
+<p>Feel free to add your own features and notifiers.You probably want to checkout the <a href="https://github.com/Gevroska/statping-ng/wiki/Notifiers">Notifier Wiki</a> to get a better understanding on how to create your own notification methods for failing/successful services.</p>
 <p>Testing on Statping-ng will test each function on MySQL, Postgres, and SQLite. I recommend running MySQL and Postgres Docker containers for testing.</p>
 <p>You can find multiple docker-compose files in the <kbd>dev</kbd> directory.</p>

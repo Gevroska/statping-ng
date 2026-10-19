@@ -3,8 +3,8 @@ package database
 import (
 	"errors"
 	"fmt"
-	"github.com/statping-ng/statping-ng/types"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types"
+	"github.com/Gevroska/statping-ng/utils"
 	"net/http"
 	"net/url"
 	"strconv"

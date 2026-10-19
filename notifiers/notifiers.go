@@ -5,10 +5,10 @@ import (
 	"html/template"
 	"time"
 
-	"github.com/statping-ng/statping-ng/types/core"
-	"github.com/statping-ng/statping-ng/types/failures"
-	"github.com/statping-ng/statping-ng/types/services"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/types/core"
+	"github.com/Gevroska/statping-ng/types/failures"
+	"github.com/Gevroska/statping-ng/types/services"
+	"github.com/Gevroska/statping-ng/utils"
 )
 
 //go:generate go run generate.go

@@ -8,12 +8,12 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sns"
-	"github.com/statping-ng/statping-ng/types/null"
+	"github.com/Gevroska/statping-ng/types/null"
 
-	"github.com/statping-ng/statping-ng/types/failures"
-	"github.com/statping-ng/statping-ng/types/notifications"
-	"github.com/statping-ng/statping-ng/types/notifier"
-	"github.com/statping-ng/statping-ng/types/services"
+	"github.com/Gevroska/statping-ng/types/failures"
+	"github.com/Gevroska/statping-ng/types/notifications"
+	"github.com/Gevroska/statping-ng/types/notifier"
+	"github.com/Gevroska/statping-ng/types/services"
 )
 
 var _ notifier.Notifier = (*amazonSNS)(nil)

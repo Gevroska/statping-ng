@@ -3,8 +3,8 @@ package services
 import (
 	"time"
 
-	"github.com/statping-ng/statping-ng/types/checkins"
-	"github.com/statping-ng/statping-ng/types/hits"
+	"github.com/Gevroska/statping-ng/types/checkins"
+	"github.com/Gevroska/statping-ng/types/hits"
 )
 
 func (s *Service) HitsColumnID() (string, int64) {

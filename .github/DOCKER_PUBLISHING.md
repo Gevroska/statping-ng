@@ -2,8 +2,8 @@
 
 The development branch is `dev`. It is the default branch in both this fork and
 upstream, and its initial commit `c02149f0a5f67fec1e60cfa3537478cd50899b15` is also
-tagged `v0.93.0`. The inherited `stable` and `unstable` branches are older; they
-are not the starting point for future fixes.
+tagged `v0.93.0`. The old release and experiment branches were archived and
+removed from this fork. Base future changes on `dev`.
 
 ## Automatic publishing
 

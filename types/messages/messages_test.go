@@ -1,8 +1,8 @@
 package messages
 
 import (
-	"github.com/statping-ng/statping-ng/database"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/database"
+	"github.com/Gevroska/statping-ng/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"

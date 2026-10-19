@@ -2,10 +2,10 @@ package services
 
 import (
 	"fmt"
-	"github.com/statping-ng/statping-ng/database"
-	"github.com/statping-ng/statping-ng/types/errors"
-	"github.com/statping-ng/statping-ng/types/metrics"
-	"github.com/statping-ng/statping-ng/utils"
+	"github.com/Gevroska/statping-ng/database"
+	"github.com/Gevroska/statping-ng/types/errors"
+	"github.com/Gevroska/statping-ng/types/metrics"
+	"github.com/Gevroska/statping-ng/utils"
 	"sort"
 )
 
