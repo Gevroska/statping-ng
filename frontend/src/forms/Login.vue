@@ -88,8 +88,8 @@
                   this.error = true
               } else if (auth.token) {
                   this.$cookies.set("statping_auth", auth.token)
-                  await this.$store.dispatch('loadAdmin')
                   this.$store.commit('setAdmin', auth.admin)
+                  await this.$store.dispatch(auth.admin ? 'loadAdmin' : 'loadRequired')
                   this.$store.commit('setLoggedIn', true)
                   this.$router.push('/dashboard')
               }

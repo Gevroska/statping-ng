@@ -40,6 +40,5 @@ private initially; set its visibility to public to permit pulls without a login.
 5. Updating this fork or publishing its image does not update a running container.
    Change the deployment image and recreate the container as a separate step.
 
-This workflow configuration does not fix any application vulnerability. The
-initial image still contains the upstream `v0.93.0` application code and must
-not be treated as a patched release.
+Version `v0.93.1` includes the user-list disclosure and CVE-2026-50884 fixes.
+Earlier fork images based on upstream `v0.93.0` do not include these fixes.

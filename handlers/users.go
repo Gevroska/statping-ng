@@ -76,9 +76,12 @@ func apiUserDeleteHandler(w http.ResponseWriter, r *http.Request) {
 	sendJsonAction(user, "delete", w, r)
 }
 
-func apiAllUsersHandler(r *http.Request) interface{} {
+func apiAllUsersHandler(w http.ResponseWriter, r *http.Request) {
 	allUsers := users.All()
-	return allUsers
+	for _, user := range allUsers {
+		user.Password = ""
+	}
+	returnJson(allUsers, w, r)
 }
 
 func apiCheckUserTokenHandler(w http.ResponseWriter, r *http.Request) {

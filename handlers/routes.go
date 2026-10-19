@@ -147,7 +147,7 @@ func Router() *mux.Router {
 	api.Handle("/api/incidents/{id}/updates/{uid}", authenticated(apiDeleteIncidentUpdateHandler, false)).Methods("DELETE")
 
 	// API USER Routes
-	api.Handle("/api/users", scoped(apiAllUsersHandler)).Methods("GET")
+	api.Handle("/api/users", authenticated(apiAllUsersHandler, false)).Methods("GET")
 	api.Handle("/api/users", authenticated(apiCreateUsersHandler, false)).Methods("POST")
 	api.Handle("/api/users/token", http.HandlerFunc(apiCheckUserTokenHandler)).Methods("POST")
 	api.Handle("/api/users/{id}", authenticated(apiUserHandler, false)).Methods("GET")

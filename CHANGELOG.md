@@ -1,3 +1,8 @@
+# 0.93.1 (10-19-2026)
+- Fix CVE-2026-50884: ordinary user API keys no longer grant administrator access or expose administrator-only fields.
+- Restrict GET /api/users to administrators and omit password hashes from the response.
+- Restore the actual session role on startup and preserve regular-user login and dashboard reloads.
+
 # 0.90.80 (01-26-2022)
 - Fixed permissions on /app directory - Thanks twouters
 

@@ -24,25 +24,28 @@ func hasSetupEnv() bool {
 	return false
 }
 
-// hasAPIQuery checks the `api` query parameter against the API Secret Key
-func hasAPIQuery(r *http.Request) bool {
+// apiQueryScope returns the privileges granted by the `api` query parameter.
+func apiQueryScope(r *http.Request) string {
 	query := r.URL.Query()
 	key := query.Get("api")
 	if key == "" {
-		return false
+		return ""
 	}
 	if subtle.ConstantTimeCompare([]byte(key), []byte(core.App.ApiSecret)) == 1 {
-		return true
+		return "admin"
 	}
-	// find user with API key
+	// A user's API key must not grant more privileges than that user has.
 	user, err := users.FindByAPIKey(key)
 	if err != nil {
-		return false
+		return ""
 	}
 	if subtle.ConstantTimeCompare([]byte(key), []byte(user.ApiKey)) == 1 {
-		return true
+		if user.Admin.Valid && user.Admin.Bool {
+			return "admin"
+		}
+		return "user"
 	}
-	return false
+	return ""
 }
 
 // hasAuthorizationHeader check to see if the Authorization header is the correct API Secret Key

@@ -67,7 +67,7 @@ func IsReadAuthenticated(r *http.Request) bool {
 	if ok := hasSetupEnv(); ok {
 		return true
 	}
-	if ok := hasAPIQuery(r); ok {
+	if apiQueryScope(r) != "" {
 		return true
 	}
 	if ok := hasAuthorizationHeader(r); ok {
@@ -86,7 +86,7 @@ func IsFullAuthenticated(r *http.Request) bool {
 	if ok := hasSetupEnv(); ok {
 		return true
 	}
-	if ok := hasAPIQuery(r); ok {
+	if apiQueryScope(r) == "admin" {
 		return true
 	}
 	if ok := hasAuthorizationHeader(r); ok {
@@ -102,7 +102,8 @@ func IsFullAuthenticated(r *http.Request) bool {
 // ScopeName will show private JSON fields in the API.
 // It will return "admin" if request has valid admin authentication.
 func ScopeName(r *http.Request) string {
-	if ok := hasAPIQuery(r); ok {
+	apiScope := apiQueryScope(r)
+	if apiScope == "admin" {
 		return "admin"
 	}
 	if ok := hasAuthorizationHeader(r); ok {
@@ -110,7 +111,7 @@ func ScopeName(r *http.Request) string {
 	}
 	claim, err := getJwtToken(r)
 	if err != nil {
-		return ""
+		return apiScope
 	}
 	if claim.Admin {
 		return "admin"
