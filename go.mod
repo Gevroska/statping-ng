@@ -1,6 +1,6 @@
 module github.com/Gevroska/statping-ng
 
-go 1.19
+go 1.21
 
 require (
 	github.com/GeertJohan/go.rice v1.0.3
@@ -137,3 +137,6 @@ require (
 	gopkg.in/square/go-jose.v2 v2.5.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+// GORM requires the accidentally tagged v2 series; use the maintained driver.
+replace github.com/mattn/go-sqlite3 => github.com/mattn/go-sqlite3 v1.14.52

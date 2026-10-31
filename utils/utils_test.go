@@ -8,6 +8,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -118,7 +119,7 @@ func TestStringInt(t *testing.T) {
 	assert.Equal(t, "1", ToString("1"))
 }
 
-func ExampleStringInt() {
+func ExampleToString_string() {
 	amount := "42"
 	fmt.Print(ToString(amount))
 	// Output: 42
@@ -173,6 +174,10 @@ func TestRenameDirectory(t *testing.T) {
 }
 
 func TestHttpRequest(t *testing.T) {
+	previousParams := Params
+	Params = viper.New()
+	t.Cleanup(func() { Params = previousParams })
+
 	// Start a local HTTP server
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
 		// Test request parameters

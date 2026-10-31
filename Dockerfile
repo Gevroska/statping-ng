@@ -11,7 +11,8 @@ COPY ./frontend .
 RUN yarn build && yarn cache clean
 
 
-FROM --platform=$BUILDPLATFORM golang:1.20.0-alpine AS backend
+FROM --platform=$BUILDPLATFORM golang:1.27.3-alpine AS backend
+ENV GOTOOLCHAIN=local
 COPY --from=xx / /
 RUN apk add --no-cache clang lld
 ARG TARGETPLATFORM
@@ -32,14 +33,14 @@ COPY types ./types
 COPY utils ./utils
 
 COPY --from=frontend /build/dist/ ./source/dist/
-RUN go install github.com/GeertJohan/go.rice/rice@latest
+RUN go install github.com/GeertJohan/go.rice/rice@v1.0.3
 RUN cd source && rice embed-go
 
 ENV CGO_ENABLED=1
 ARG VERSION
 ARG COMMIT
 RUN xx-go build -a -ldflags "-s -w -extldflags -static -X main.VERSION=$VERSION -X main.COMMIT=$COMMIT" -o statping --tags "netgo linux" ./cmd
-RUN xx-verify --static statping
+RUN xx-verify --static statping && go version -m statping
 
 
 # Statping main Docker image that contains all required libraries

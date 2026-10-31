@@ -1,3 +1,8 @@
+# 0.93.2 (11-01-2026)
+- Build production Docker images and release binaries with Go 1.27.3, including current Go security fixes.
+- Update the SQLite driver to v1.14.52 for compatibility with the maintained Alpine C toolchain while retaining the existing GORM version.
+- Gate image publication on real HTTP authorization checks and two successful scheduled monitor checks, retaining the 0.93.1 authorization fixes.
+
 # 0.93.1 (10-19-2026)
 - Fix CVE-2026-50884: ordinary user API keys no longer grant administrator access or expose administrator-only fields.
 - Restrict GET /api/users to administrators and omit password hashes from the response.
